@@ -3,8 +3,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect } from "react";
 import styles from "../styles/Home.module.css";
+import { useRouter } from "next/router";
 
 export default function Home() {
+  const router = useRouter();
   const test = (e) => {
     if (e.persisted) {
       console.log("🤔");
@@ -67,6 +69,7 @@ export default function Home() {
           </a>
         </div>
         <Link href="/a">Link to A!</Link>
+        <button onClick={() => router.push("/a")}>ㅎㅇ</button>
       </main>
 
       <footer className={styles.footer}>

@@ -1,9 +1,23 @@
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
+import { useEffect } from "react";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
+  const test = (e) => {
+    if (e.persisted) {
+      console.log("🤔");
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("pageshow", test);
+
+    return () => {
+      window.removeEventListener("pageshow", test);
+    };
+  }, []);
   return (
     <div className={styles.container}>
       <Link href="/a">Link to A!</Link>
@@ -52,6 +66,7 @@ export default function Home() {
             </p>
           </a>
         </div>
+        <Link href="/a">Link to A!</Link>
       </main>
 
       <footer className={styles.footer}>
